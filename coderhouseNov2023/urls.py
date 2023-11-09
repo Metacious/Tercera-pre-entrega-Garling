@@ -16,9 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from preentrega3.views import dota
+from preentrega3.views import dota, formulario_heroes, formulario_armas, formulario_consumibles, lista_heroes, lista_armas, lista_consumibles
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('heroesdota', dota)
+    path('dota', dota),
+    path('formulario-heroes', formulario_heroes),
+    path('formulario-armas', formulario_armas),
+    path('formulario-consumibles', formulario_consumibles),
+    path('lista-heroes', lista_heroes),
+    path('lista-armas', lista_armas),
+    path('lista-consumibles', lista_consumibles),
 ]
