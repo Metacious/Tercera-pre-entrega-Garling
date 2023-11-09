@@ -1,16 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends "layout.html" %}
+
+{% block title %}
+    <title>Dota - Inicio</title>
+{% endblock title %}
+
+{% block main %}
+
     <!-- Se muestra una tabla con los héroes y un botón para agregar un héroe a través del formulario -->
     <table>
-
+        {% for heroe in heroes %}
+        <tr>
+            <td>{{heroe.nombre}}</td>
+            <td>{{heroe.tipo}}</td>
+            <td>{{heroe.aporte}}</td>
+            <td>{{heroe.vida}}</td>
+            <td>{{heroe.velocidad}}</td>
+        </tr>
+        {% endfor %}
     </table>
-    <br>
-    <a href="formulario-consumibles.html">Agregar consumible</a>
-</body>
-</html>
+    <a href="formulario-heroes.html">Crear Héroe</a>
+
+{% endblock main %}

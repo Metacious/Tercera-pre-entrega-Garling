@@ -1,16 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <!-- Se muestra una tabla con los consumibles y un botón para agregar un consumible a través del formulario -->
-    <table>
+{% extends "layout.html" %}
 
+{% block title %}
+    <title>Dota - Heroes</title>
+{% endblock title %}
+
+{% block main %}
+
+    <!-- Se muestra una tabla con los héroes y un botón para agregar un héroe a través del formulario -->
+    <table>
+        {% for arma in armas %}
+        <tr>
+            <td>{{arma.nombre}}</td>
+            <td>{{arma.rareza}}</td>
+            <td>{{arma.descripcion}}</td>
+            <td>{{arma.costo}}</td>
+        </tr>
+        {% endfor %}
     </table>
-    <br>
-    <a href="formulario-consumibles.html">Agregar consumible</a>
-</body>
-</html>
+    <a href="formulario-armas.html">Crear Arma</a>
+
+{% endblock main %}
