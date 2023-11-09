@@ -20,8 +20,8 @@ from preentrega3.views import dota, lista_heroes, lista_armas, lista_consumibles
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('preentrega3/', include("preentrega3.urls")),
+    path('admin/', admin.site.urls),
     path("", dota, name="index"),
     path('preentrega3/', lista_heroes, name="heroes"),
     path('preentrega3/', lista_armas, name="armas"),

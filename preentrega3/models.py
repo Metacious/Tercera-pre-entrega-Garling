@@ -26,6 +26,8 @@ class Consumible(models.Model):
     nombre = models.CharField(max_length=32)
     rareza = models.CharField(max_length=16)
     descripcion = models.CharField(max_length=256)
+    sanacion = models.IntegerField(default=0)
+    duracion = models.IntegerField(default=5)
     costo = models.IntegerField(default=1000)
 
     def __str__(self):
