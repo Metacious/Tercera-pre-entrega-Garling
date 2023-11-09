@@ -18,11 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from preentrega3.views import dota, lista_heroes, lista_armas, lista_consumibles, crear_heroe, crear_arma, crear_consumible, buscar_heroe, buscar_arma, buscar_consumible
 
-
-# PREGUNTAR POR EL ARCHIVO URLS QUE SE DEBE HACER EN CARPETA PREENTREGA
-
 urlpatterns = [
-    path('preentrega3/', include("preentrega3.urls")),
     path('admin/', admin.site.urls),
-    path("dota", dota),
+    path('preentrega3/', include('preentrega3.urls')),
 ]

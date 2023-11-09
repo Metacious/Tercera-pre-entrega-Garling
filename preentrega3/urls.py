@@ -3,6 +3,7 @@ from preentrega3.views import dota, lista_heroes, lista_armas, lista_consumibles
 
 
 urlpatterns = [
+    path('preentrega3/', dota, name="index"),
     path('preentrega3/', lista_heroes, name="heroes"),
     path('preentrega3/', lista_armas, name="armas"),
     path('preentrega3/', lista_consumibles, name="consumibles"),

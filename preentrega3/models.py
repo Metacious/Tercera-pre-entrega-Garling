@@ -10,7 +10,7 @@ class Heroe(models.Model):
     velocidad = models.IntegerField(default=300)
 
     def __str__(self):
-        return self
+        return  f"{self.nombre}, {self.tipo}, {self.aporte}, {self.vida}, {self.velocidad}"
 
 
 class Arma(models.Model):
@@ -20,7 +20,7 @@ class Arma(models.Model):
     costo = models.IntegerField(default=1000)
 
     def __str__(self):
-        return self
+        return f"{self.nombre}, {self.rareza}, {self.descripcion}, {self.costo}"
 
 class Consumible(models.Model):
     nombre = models.CharField(max_length=32)
@@ -31,4 +31,4 @@ class Consumible(models.Model):
     costo = models.IntegerField(default=1000)
 
     def __str__(self):
-        return self
+        return f"{self.nombre}, {self.rareza}, {self.descripcion}, {self.sanacion}, {self.duracion}, {self.costo}"
