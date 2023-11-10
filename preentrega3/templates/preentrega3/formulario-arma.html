@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    <title>Dota - Crear Arma</title>
+{% endblock title %}
+
+{% block main %}
+<main>
+    <div>
+        <h1>Formulario Arma</h1>
+        <h2>Ingresa los datos para crear un arma</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {{ formulario.as_p }}
+            <input class="submit" type="submit" value="Crear Arma">
+        </form>
+        <a href="{% url 'armas' %}">Volver a la lista de armas</a>
+    </div>
+</main>
+{% endblock main %}

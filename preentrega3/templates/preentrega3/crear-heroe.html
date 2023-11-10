@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    <title>Dota - Crear Heroe</title>
+{% endblock title %}
+
+{% block main %}
+
+        <h1>Formulario Héroe</h1>
+        <h2>Ingresa los datos para crear un héroe</h2>
+        <a href="{% url 'heroes' %}">Volver a la lista de héroes</a>
+        <form method="post">
+            {% csrf_token %}
+            {{formulario.as_p}}
+            <input type="submit" value="Crear Héroe">
+        </form>
+
+{% endblock main %}

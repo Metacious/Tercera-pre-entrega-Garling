@@ -16,7 +16,6 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from preentrega3.views import dota, lista_heroes, lista_armas, lista_consumibles, crear_heroe, crear_arma, crear_consumible, buscar_heroe, buscar_arma, buscar_consumible
 
 urlpatterns = [
     path('admin/', admin.site.urls),

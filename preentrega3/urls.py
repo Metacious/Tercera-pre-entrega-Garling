@@ -1,16 +1,21 @@
-from django.urls import path, include
-from preentrega3.views import dota, lista_heroes, lista_armas, lista_consumibles, crear_heroe, crear_arma, crear_consumible, buscar_heroe, buscar_arma, buscar_consumible
-
+from django.urls import path
+from preentrega3.views import (dota, lista_heroes, lista_armas, lista_consumibles, 
+                               crear_heroe, crear_arma, crear_consumible, 
+                               buscar_heroe, buscar_arma, buscar_consumible,
+                               formulario_heroe, formulario_arma, formulario_consumible)
 
 urlpatterns = [
-    path('preentrega3/', dota, name="index"),
-    path('preentrega3/', lista_heroes, name="heroes"),
-    path('preentrega3/', lista_armas, name="armas"),
-    path('preentrega3/', lista_consumibles, name="consumibles"),
-    path('preentrega3/', crear_heroe, name="crear-heroe"),
-    path('preentrega3/', crear_arma, name="crear-arma"),
-    path('preentrega3/', crear_consumible, name="crear-consumible"),
-    path('preentrega3/', buscar_heroe, name="buscar-heroe"),
-    path('preentrega3/', buscar_arma, name="buscar-arma"),
-    path('preentrega3/', buscar_consumible, name="buscar-consumible"),
+    path('dota', dota, name="index"),
+    path('heroes', lista_heroes, name="heroes"),
+    path('armas/', lista_armas, name="armas"),
+    path('consumibles', lista_consumibles, name="consumibles"),
+    path('crear-heroe/', crear_heroe, name="crear-heroe"),
+    path('crear-arma/', crear_arma, name="crear-arma"),
+    path('crear-consumible/', crear_consumible, name="crear-consumible"),
+    path('buscar-heroe/', buscar_heroe, name='buscar-heroe'),
+    path('buscar-arma/', buscar_arma, name='buscar-arma'),
+    path('buscar-consumible/', buscar_consumible, name='buscar-consumible'),
+    path('formulario-heroe/', formulario_heroe, name='formulario-heroe'),
+    path('formulario-arma/', formulario_arma, name='formulario-arma'),
+    path('formulario-consumible/', formulario_consumible, name='formulario-consumible')
 ]

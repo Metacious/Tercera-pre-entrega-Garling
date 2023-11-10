@@ -5,20 +5,36 @@
 {% endblock title %}
 
 {% block main %}
+    <!-- Buscador de heroes -->
+    <a href="{% url 'armas' %}">Ver todas las armas</a><br>
+    <a href="{% url 'formulario-arma' %}">Agregar un arma</a>
+    <br><br>
+    <form action="{% url 'buscar-arma' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="busqueda">
+        <input type="submit" value="Buscar Arma">
+    </form>
+    <br>
 
     <!-- Se muestra una tabla con los héroes y un botón para agregar un héroe a través del formulario -->
-    <table>
-        {% for consumible in consumibles %}
+    <table style="border: 1px;">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Rareza</th>
+                <th>Descripcion</th>
+                <th>Costo</th>
+            </tr>
+        </thead>
+        {% for arma in armas %}
+        </tr>
         <tr>
-            <td>{{consumible.nombre}}</td>
-            <td>{{consumible.rareza}}</td>
-            <td>{{consumible.descripcion}}</td>
-            <td>{{consumible.sanacion}}</td>
-            <td>{{consumible.duracion}}</td>
-            <td>{{consumible.costo}}</td>
+            <td>{{arma.nombre}}</td>
+            <td>{{arma.rareza}}</td>
+            <td>{{arma.descripcion}}</td>
+            <td>{{arma.costo}}</td>
         </tr>
         {% endfor %}
     </table>
-    <a href="formulario-armas.html">Crear Consumible</a>
 
 {% endblock main %}
