@@ -88,7 +88,7 @@ def crear_heroe(request):
         formulario_heroe = HeroeFormulario()
     http_response = render(
         request = request,
-        template_name ='preentrega3/lista-heroes.html',
+        template_name ='preentrega3/crear-heroe.html',
         context = {'formulario_heroe' : formulario_heroe}
     )
     return http_response
@@ -118,7 +118,7 @@ def crear_arma(request):
         formulario_arma = ArmaFormulario()
     http_response = render(
         request = request,
-        template_name ='preentrega3/lista-armas.html',
+        template_name ='preentrega3/crear-arma.html',
         context = {'formulario_arma' : formulario_arma}
         )
     return http_response
@@ -151,7 +151,7 @@ def crear_consumible(request):
         formulario_consumible = ConsumibleFormulario()
     http_response = render(
         request = request,
-        template_name ='preentrega3/lista-consumibles.html',
+        template_name ='preentrega3/crear-consumible.html',
         context = {'formulario_consumible' : formulario_consumible}
         )
     return http_response
