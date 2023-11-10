@@ -1,11 +1,10 @@
 from django.urls import path
 from preentrega3.views import (dota, lista_heroes, lista_armas, lista_consumibles, 
                                crear_heroe, crear_arma, crear_consumible, 
-                               buscar_heroe, buscar_arma, buscar_consumible,
-                               formulario_heroe, formulario_arma, formulario_consumible)
+                               buscar_heroe, buscar_arma, buscar_consumible)
 
 urlpatterns = [
-    path('dota', dota, name="index"),
+    path('', dota, name="index"),
     path('heroes', lista_heroes, name="heroes"),
     path('armas/', lista_armas, name="armas"),
     path('consumibles', lista_consumibles, name="consumibles"),
@@ -15,7 +14,4 @@ urlpatterns = [
     path('buscar-heroe/', buscar_heroe, name='buscar-heroe'),
     path('buscar-arma/', buscar_arma, name='buscar-arma'),
     path('buscar-consumible/', buscar_consumible, name='buscar-consumible'),
-    path('formulario-heroe/', formulario_heroe, name='formulario-heroe'),
-    path('formulario-arma/', formulario_arma, name='formulario-arma'),
-    path('formulario-consumible/', formulario_consumible, name='formulario-consumible')
 ]

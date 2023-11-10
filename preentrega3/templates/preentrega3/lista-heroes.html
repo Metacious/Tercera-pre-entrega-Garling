@@ -7,7 +7,6 @@
 {% block main %}
     <!-- Buscador de heroes -->
     <a href="{% url 'heroes' %}">Ver todos los heroes</a><br>
-    <a href="{% url 'formulario-heroe' %}">Agregar un héroe</a><br>
     <a href="{% url 'crear-heroe' %}"><b>Crear un héroe</b></a>
     <br><br>
     <form action="{% url 'buscar-heroe' %}" method="post">
@@ -22,10 +21,10 @@
         <thead>
             <tr>
                 <th>Nombre</th>
-                <th>Rareza</th>
-                <th>Descripcion</th>
-                <th>Costo</th>
-                <th>Costo</th>
+                <th>Tipo</th>
+                <th>Rol</th>
+                <th>Vida</th>
+                <th>Velocidad</th>
             </tr>
         </thead>
         {% for heroe in heroes %}
@@ -39,4 +38,14 @@
         </tr>
         {% endfor %}
     </table>
+       
+    <h1>Formulario Héroe</h1>
+    <h2>Ingresa los datos para crear un héroe</h2>
+    <a href="{% url 'heroes' %}">Volver a la lista de héroes</a>
+    <form method="post">
+        {% csrf_token %}
+        {{formulario_heroe.as_p}}
+        <input type="submit" value="Crear Héroe">
+    </form>
+
 {% endblock main %}

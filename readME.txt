@@ -2,6 +2,9 @@ DESCRIPCION DEL PROYECTO:
 
 Es una aplicacion web que muestra la lista de heroes, armas y objetos consumibles del juego DotA (Defense of the Ancients).
 
+ACCESO: 
+localhost/preentrega3/dota
+
 MODELOS:
 Heroe
 Arma

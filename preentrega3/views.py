@@ -1,9 +1,8 @@
 from django.shortcuts import render
 
-from django.http import HttpResponse
 from django.urls import reverse
 from django.db.models import Q
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 
 from .models import Heroe, Arma, Consumible
 from .forms import HeroeFormulario, ArmaFormulario, ConsumibleFormulario
@@ -71,10 +70,10 @@ def lista_consumibles(request):
 # Vistas para crear héroes, armas o consumibles.
 def crear_heroe(request):
     if request.method == "POST":
-        formulario = HeroeFormulario(request.POST)
+        formulario_heroe = HeroeFormulario(request.POST)
 
-        if formulario.is_valid():
-            data = formulario.cleaned_data
+        if formulario_heroe.is_valid():
+            data = formulario_heroe.cleaned_data
             nombre = data["nombre"]
             tipo = data["tipo"]
             aporte = data["aporte"]
@@ -83,24 +82,24 @@ def crear_heroe(request):
 
             heroe = Heroe(nombre = nombre, tipo = tipo, aporte = aporte, vida = vida, velocidad = velocidad)           
             heroe.save()
-            exito = reverse('lista-heroes')
+            exito = reverse("heroes")
             return redirect(exito)
     else: 
-        formulario = HeroeFormulario()
+        formulario_heroe = HeroeFormulario()
     http_response = render(
         request = request,
         template_name ='preentrega3/lista-heroes.html',
-        context = {'formulario' : formulario}
+        context = {'formulario_heroe' : formulario_heroe}
     )
     return http_response
 
 
 def crear_arma(request):
     if request.method == 'POST':
-        formulario = ArmaFormulario(request.POST)
+        formulario_arma = ArmaFormulario(request.POST)
 
-        if formulario.is_valid():
-            data = formulario.cleaned_data
+        if formulario_arma.is_valid():
+            data = formulario_arma.cleaned_data
             nombre = data["nombre"]
             rareza = data["rareza"]
             descripcion = data["descripcion"]
@@ -113,23 +112,23 @@ def crear_arma(request):
                 costo = costo,
                 )           
             arma.save()
-            exito = reverse('lista-armas')
+            exito = reverse('armas')
             return redirect(exito)
     else: 
-        formulario = ArmaFormulario()
+        formulario_arma = ArmaFormulario()
     http_response = render(
         request = request,
         template_name ='preentrega3/lista-armas.html',
-        context = {'formulario' : formulario}
+        context = {'formulario_arma' : formulario_arma}
         )
     return http_response
 
 def crear_consumible(request):
     if request.method == 'POST':
-        formulario = ConsumibleFormulario(request.POST)
+        formulario_consumible = ConsumibleFormulario(request.POST)
 
-        if formulario.is_valid():
-            data = formulario.cleaned_data
+        if formulario_consumible.is_valid():
+            data = formulario_consumible.cleaned_data
             nombre = data["nombre"]
             rareza = data["rareza"]
             descripcion = data["descripcion"]
@@ -137,7 +136,7 @@ def crear_consumible(request):
             duracion = data["duracion"]
             costo = data["costo"]
             
-            consumible = Arma(
+            consumible = Consumible(
                 nombre = nombre,
                 rareza = rareza,
                 descripcion = descripcion,
@@ -146,14 +145,14 @@ def crear_consumible(request):
                 costo = costo,
                 )           
             consumible.save()
-            exito = reverse('lista-consumibles')
+            exito = reverse('consumibles')
             return redirect(exito)
     else: 
-        formulario = ConsumibleFormulario()
+        formulario_consumible = ConsumibleFormulario()
     http_response = render(
         request = request,
         template_name ='preentrega3/lista-consumibles.html',
-        context = {'formulario' : formulario}
+        context = {'formulario_consumible' : formulario_consumible}
         )
     return http_response
 
@@ -197,53 +196,3 @@ def buscar_consumible(request):
             context=context,
         )
         return http_response
-    
-# Vistas de formularios
-def formulario_heroe(request):
-        # Creamos contexto para trabajar con parámetros.
-    context = {
-        'heroes' : Heroe.objects.all()
-    }
-
-    # Asignamos render para mostrar el archivo html.
-    http_response = render(
-        request = request,
-        template_name= 'preentrega3/formulario-heroe.html',
-        context= context
-    )
-    # Devuelve la variable http_response
-    return http_response
-
-def formulario_arma(request):
-        # Creamos contexto para trabajar con parámetros.
-    context = {
-        
-    }
-
-    # Asignamos render para mostrar el archivo html.
-    http_response = render(
-        request = request,
-        template_name= 'preentrega3/formulario-arma.html',
-        context= context
-    )
-    # Devuelve la variable http_response
-    return http_response
-
-def formulario_consumible(request):
-        # Creamos contexto para trabajar con parámetros.
-    context = {
-        
-    }
-
-    # Asignamos render para mostrar el archivo html.
-    http_response = render(
-        request = request,
-        template_name= 'preentrega3/formulario-consumible.html',
-        context= context
-    )
-    # Devuelve la variable http_response
-    return http_response
-
-
-
-

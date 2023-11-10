@@ -9,9 +9,10 @@
         <h1>Formulario Consumible</h1>
         <h2>Ingresa los datos para crear un consumible</h2>
         <a href="{% url 'consumibles' %}">Volver a la lista de consumibles</a>
-        <form method="POST">
+        <form method="post">
             {% csrf_token %}
-            {{ formulario.as_p }}
-            <input class="submit" type="submit" value="Crear Consumible">
+            {{formulario_consumible.as_p}}
+            <input type="submit" value="Crear Consumible">
         </form>
+
 {% endblock main %}

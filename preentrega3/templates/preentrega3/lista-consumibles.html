@@ -7,7 +7,7 @@
 {% block main %}
     <!-- Buscador de heroes -->
     <a href="{% url 'consumibles' %}">Ver todos los consumibles</a><br>
-    <a href="{% url 'formulario-consumible' %}">Agregar un consumible</a>
+    <a href="{% url 'crear-consumible' %}">Agregar un consumible</a>
     <br><br>
     <form action="{% url 'buscar-consumible' %}" method="post">
         {% csrf_token %}
@@ -40,4 +40,13 @@
         </tr>
         {% endfor %}
     </table>
+
+    <h1>Formulario Consumible</h1>
+    <h2>Ingresa los datos para crear un consumible</h2>
+    <a href="{% url 'consumibles' %}">Volver a la lista de consumibles</a>
+    <form method="post">
+        {% csrf_token %}
+        {{formulario_consumible.as_p}}
+        <input type="submit" value="Crear Consumible">
+    </form>
 {% endblock main %}

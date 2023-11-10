@@ -7,7 +7,7 @@
 {% block main %}
     <!-- Buscador de heroes -->
     <a href="{% url 'armas' %}">Ver todas las armas</a><br>
-    <a href="{% url 'formulario-arma' %}">Agregar un arma</a>
+    <a href="{% url 'crear-arma' %}">Agregar un arma</a>
     <br><br>
     <form action="{% url 'buscar-arma' %}" method="post">
         {% csrf_token %}
@@ -36,5 +36,14 @@
         </tr>
         {% endfor %}
     </table>
+
+    <h1>Formulario Arma</h1>
+    <h2>Ingresa los datos para crear un arma</h2>
+    <a href="{% url 'armas' %}">Volver a la lista de armas</a>
+    <form method="post">
+        {% csrf_token %}
+        {{formulario_arma.as_p}}
+        <input type="submit" value="Crear Arma">
+    </form>
 
 {% endblock main %}
