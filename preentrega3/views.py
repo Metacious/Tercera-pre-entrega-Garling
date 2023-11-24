@@ -21,6 +21,7 @@ def dota(request):
     # Devuelve la variable http_response
     return http_response
 
+# READ
 # Vistas de listas
 def lista_heroes(request):
         # Creamos contexto para trabajar con parámetros.
@@ -67,6 +68,7 @@ def lista_consumibles(request):
     # Devuelve la variable http_response
     return http_response
 
+# CREATE
 # Vistas para crear héroes, armas o consumibles.
 def crear_heroe(request):
     if request.method == "POST":
@@ -156,7 +158,7 @@ def crear_consumible(request):
         )
     return http_response
 
-
+# SEARCH
 # Vistas para buscar héroes, armas o consumibles.
 def buscar_heroe(request):
     if(request.method == "POST"):
@@ -196,3 +198,170 @@ def buscar_consumible(request):
             context=context,
         )
         return http_response
+    
+# DELETE
+# Vistas para eliminar datos.
+def eliminar_heroe(request, nombre_de_heroe):
+    # Declarar héroe por eliminar.
+    heroe_por_eliminar = Heroe.objects.get(nombre = nombre_de_heroe)
+    # Eliminar con la función delete.
+    heroe_por_eliminar.delete()
+    # Volver al menú.
+    heroes = Heroe.objects.all() # Trae a todos los héroes.
+    context = {"heroes": heroes}
+    # Definir variable http_response.
+    http_response = render(
+        request=request,
+        template_name='preentrega3/lista-heroes.html',
+        context=context,
+    )
+    # Entregar resultado.
+    return http_response
+
+def eliminar_arma(request, nombre_de_arma):
+    # Declarar héroe por eliminar.
+    arma_por_eliminar = Heroe.objects.get(nombre = nombre_de_arma)
+    # Eliminar con la función delete.
+    arma_por_eliminar.delete()
+    # Volver al menú.
+    armas = Heroe.objects.all() # Trae a todos los héroes.
+    context = {"armas": armas}
+    # Definir variable http_response.
+    http_response = render(
+        request=request,
+        template_name='preentrega3/lista-armas.html',
+        context=context,
+    )
+    # Entregar resultado.
+    return http_response
+
+def eliminar_consumible(request, nombre_de_consumible):
+    # Declarar héroe por eliminar.
+    consumible_por_eliminar = Heroe.objects.get(nombre = nombre_de_consumible)
+    # Eliminar con la función delete.
+    consumible_por_eliminar.delete()
+    # Volver al menú.
+    consumibles = Heroe.objects.all() # Trae a todos los héroes.
+    context = {"consumibles": consumibles}
+    # Definir variable http_response.
+    http_response = render(
+        request=request,
+        template_name='preentrega3/lista-consumibles.html',
+        context=context,
+    )
+    # Entregar resultado.
+    return http_response
+
+# UPDATE
+# Vistas para editar un elemento.
+
+def editar_heroe(request, nombre_de_heroe):
+    heroe_por_editar = Heroe.objects.get(nombre = nombre_de_heroe)
+    # Si se recibe un formulario POST entonces se editan los datos.
+    if(request.method == "POST"):
+        # Se usa el mismo formulario que se creó para agregar datos.
+        formulario_heroe = HeroeFormulario(request.POST)
+
+        print(formulario_heroe)
+
+        if(formulario_heroe.is_valid):
+            informacion_heroe = formulario_heroe.cleaned_data
+
+            heroe_por_editar.nombre = informacion_heroe["nombre"]
+            heroe_por_editar.tipo = informacion_heroe["tipo"]
+            heroe_por_editar.aporte = informacion_heroe["aporte"]
+            heroe_por_editar.vida = informacion_heroe["vida"]
+            heroe_por_editar.velocidad = informacion_heroe["velocidad"]
+
+            heroe_por_editar.save()
+            # Definir variable http_response.
+            http_response = render(
+            request=request,
+            template_name='preentrega3/lista-heroes.html'
+            )
+
+            return http_response
+    else:
+        formulario_heroe = HeroeFormulario(initial={"nombre": heroe_por_editar.nombre, "tipo": heroe_por_editar.tipo,
+                                                    "aporte": heroe_por_editar.aporte, "vida": heroe_por_editar.vida, "velocidad": heroe_por_editar.velocidad})
+        # Definir variable http_response.
+        
+    return render(request, 'preentrega3/editar-heroe.html', {"formulario_heroe": formulario_heroe, "nombre_de_heroe": nombre_de_heroe})
+
+########
+
+def editar_arma(request, nombre_de_heroe):
+    heroe_por_editar = Heroe.objects.get(nombre = nombre_de_heroe)
+    # Si se recibe un formulario POST entonces se editan los datos.
+    if(request.method == "POST"):
+        # Se usa el mismo formulario que se creó para agregar datos.
+        formulario_heroe = HeroeFormulario(request.POST)
+
+        print(formulario_heroe)
+
+        if(formulario_heroe.is_valid):
+            informacion_heroe = formulario_heroe.cleaned_data
+
+            heroe_por_editar.nombre = informacion_heroe["nombre"]
+            heroe_por_editar.tipo = informacion_heroe["tipo"]
+            heroe_por_editar.aporte = informacion_heroe["aporte"]
+            heroe_por_editar.vida = informacion_heroe["vida"]
+            heroe_por_editar.velocidad = informacion_heroe["velocidad"]
+
+            heroe_por_editar.save()
+            # Definir variable http_response.
+            http_response = render(
+            request=request,
+            template_name='preentrega3/lista-heroes.html'
+            )
+
+            return http_response
+    else:
+        formulario_heroe = HeroeFormulario(initial={"nombre": heroe_por_editar.nombre, "tipo": heroe_por_editar.tipo,
+                                                    "aporte": heroe_por_editar.aporte, "vida": heroe_por_editar.vida, "velocidad": heroe_por_editar.velocidad})
+        # Definir variable http_response.
+        http_response = render(
+        request=request,
+        template_name='preentrega3/editar-heroe.html',
+        formulario = {"formulario_heroe": formulario_heroe, "nombre_de_heroe": nombre_de_heroe}
+            )
+    return http_response
+
+######
+
+def editar_consumible(request, nombre_de_heroe):
+    heroe_por_editar = Heroe.objects.get(nombre = nombre_de_heroe)
+    # Si se recibe un formulario POST entonces se editan los datos.
+    if(request.method == "POST"):
+        # Se usa el mismo formulario que se creó para agregar datos.
+        formulario_heroe = HeroeFormulario(request.POST)
+
+        print(formulario_heroe)
+
+        if(formulario_heroe.is_valid):
+            informacion_heroe = formulario_heroe.cleaned_data
+
+            heroe_por_editar.nombre = informacion_heroe["nombre"]
+            heroe_por_editar.tipo = informacion_heroe["tipo"]
+            heroe_por_editar.aporte = informacion_heroe["aporte"]
+            heroe_por_editar.vida = informacion_heroe["vida"]
+            heroe_por_editar.velocidad = informacion_heroe["velocidad"]
+
+            heroe_por_editar.save()
+            # Definir variable http_response.
+            http_response = render(
+            request=request,
+            template_name='preentrega3/lista-heroes.html'
+            )
+
+            return http_response
+    else:
+        formulario_heroe = HeroeFormulario(initial={"nombre": heroe_por_editar.nombre, "tipo": heroe_por_editar.tipo,
+                                                    "aporte": heroe_por_editar.aporte, "vida": heroe_por_editar.vida, "velocidad": heroe_por_editar.velocidad})
+        # Definir variable http_response.
+        http_response = render(
+        request=request,
+        template_name='preentrega3/editar-heroe.html',
+        formulario = {"formulario_heroe": formulario_heroe, "nombre_de_heroe": nombre_de_heroe}
+            )
+    return http_response
