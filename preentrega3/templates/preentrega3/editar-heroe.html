@@ -1,18 +1,18 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    <title>Dota - Crear Heroe</title>
+    <title>Dota - Editar Heroe</title>
 {% endblock title %}
 
 {% block main %}
 
-        <h1>Formulario Héroe</h1>
+        <h1>Formulario modificación de Héroe</h1>
         <h2>Ingresa los datos para modificar un héroe</h2>
 
         <form method="post" style="width: 100%; max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; justify-content: center; align-items: center;">
             {% csrf_token %}
             {{formulario_heroe.as_p}}
-            <input type="submit" value="Crear Héroe">
+            <input type="submit" value="Editar Héroe">
 
         </form>
         

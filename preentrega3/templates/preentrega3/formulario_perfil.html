@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    <title>Dota - Registro de usuario</title>
+{% endblock title %}
+
+{% block main %}
+
+<h1>Editar datos de perfil</h1>
+<h2>Tu nombre de usuario es <b>{{ user }}</b></h2>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Gurdar datos"/>
+</form>
+
+{% endblock main %}

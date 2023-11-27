@@ -22,6 +22,7 @@
                 <th scope="col">Rareza</th>
                 <th scope="col">Descripcion</th>
                 <th scope="col">Costo</th>
+                <th scope="col">Autor</th>
                 <th scope="col">Editar</th>
                 <th scope="col">Eliminar</th>
             </tr>
@@ -33,11 +34,17 @@
                 <td>{{arma.rareza}}</td>
                 <td>{{arma.descripcion}}</td>
                 <td>{{arma.costo}}</td>
-                <td><a href="{% url 'editar-arma' arma.nombre %}">Editar</a></td>
-                <td><a href="{% url 'eliminar-arma' arma.nombre %}">Eliminar</a></td>
+                <td>{{arma.creador}}</td>
+                {% if user == arma.creador or user.is_superuser %}
+                <td><a href="{% url 'editar-arma' arma.id %}">Editar</a></td>
+                {% endif %}
+                {% if user == arma.creador or user.is_superuser %}
+                <td><a href="{% url 'eliminar-arma' arma.id %}">Eliminar</a></td>
+                {% endif %}
             </tr>
             {% endfor %}
         </tbody>
     </table>
     <a class="btn btn-primary" href="{% url 'crear-arma' %}" role="button">Agregar un arma</a>
+    <a class="btn btn-secondary" href="{% url 'armas' %}" role="button">Reiniciar lista armas</a>
 {% endblock main %}

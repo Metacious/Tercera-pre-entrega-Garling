@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    <title>Dota - Editar Arma</title>
+{% endblock title %}
+
+{% block main %}
+
+        <h1>Formulario modificación de Arma</h1>
+        <h2>Ingresa los datos para modificar un arma</h2>
+
+        <form method="post" style="width: 100%; max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+            {% csrf_token %}
+            {{formulario_arma.as_p}}
+            <input type="submit" value="Editar Arma">
+
+        </form>
+        
+        <a class="btn btn-primary" href="{% url 'armas' %}" role="button">Volver a la lista de armas</a>
+
+{% endblock main %}

@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    <title>Dota - Editar Consumible</title>
+{% endblock title %}
+
+{% block main %}
+
+        <h1>Formulario modificación de Consumible</h1>
+        <h2>Ingresa los datos para modificar un consumible</h2>
+
+        <form method="post" style="width: 100%; max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+            {% csrf_token %}
+            {{formulario_consumible.as_p}}
+            <input type="submit" value="Editar Consumible">
+
+        </form>
+        
+        <a class="btn btn-primary" href="{% url 'consumibles' %}" role="button">Volver a la lista de consumibles</a>
+
+{% endblock main %}

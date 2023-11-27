@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    <title>Dota - Avatar</title>
+{% endblock title %}
+
+{% block main %}
+
+<h1>Ver y editar avatar</h1>
+
+<div>
+    {% if user.avatar.imagen %}
+    <img src="{{user.avatar.imagen.url}}" style = "max-width: 300px;">
+    {% endif %}
+</div>
+
+<h2>Sube tu ávatar aquí</h2>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ formulario_avatar.as_p }}
+    <input type="submit" value="Subir imagen"/>
+</form>
+
+{% endblock main %}

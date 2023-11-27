@@ -24,6 +24,7 @@
                 <th scope="col">Sanacion</th>
                 <th scope="col">Duracion</th>
                 <th scope="col">Costo</th>
+                <th scope="col">Autor</th>
                 <th scope="col">Editar</th>
                 <th scope="col">Eliminar</th>
             </tr>
@@ -37,12 +38,18 @@
                 <td>{{consumible.sanacion}}</td>
                 <td>{{consumible.duracion}}</td>
                 <td>{{consumible.costo}}</td>
-                <td><a href="{% url 'editar-consumible' consumible.nombre %}">Editar</a></td>
-                <td><a href="{% url 'eliminar-consumible' consumible.nombre %}">Eliminar</a></td>
+                <td>{{consumible.creador}}</td>
+                {% if user == consumible.creador or user.is_superuser %}
+                <td><a href="{% url 'editar-consumible' consumible.id %}">Editar</a></td>
+                {% endif %}
+                {% if user == consumible.creador or user.is_superuser %}
+                <td><a href="{% url 'eliminar-consumible' consumible.id %}">Eliminar</a></td>
+                {% endif %}
             </tr>
             {% endfor %}
         </tbody>
-    </table>
+    </table>    
     <a class="btn btn-primary" href="{% url 'crear-consumible' %}" role="button">Agregar un consumible</a>
+    <a class="btn btn-secondary" href="{% url 'consumibles' %}" role="button">Reiniciar lista consumible</a>
 
 {% endblock main %}

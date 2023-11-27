@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    <title>Dota - Inicio</title>
+{% endblock title %}
+
+{% block main %}
+
+
+{% for heroe in heroes %}
+<h1>{{heroe.nombre}}</h1>
+
+<p>Este héroe pelea por la supervivencia del planeta. Con sus habilidades ayuda a sus compañeros a superar a cualquier oponente que se atraviese.
+
+<h2>Guía para jugar con {{heroe.nombre}}</h2>
+<p>Se recomiendan seguir estos pasos para jugar con {{heroe.nombre}}</p>
+{% endfor %}
+
+<br><a class="btn btn-primary" href="{% url 'heroes' %}" role="button">Volver a la lista de héroes</a>
+
+{% endblock main %}

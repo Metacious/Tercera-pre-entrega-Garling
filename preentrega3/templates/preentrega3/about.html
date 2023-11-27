@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    <title>Dota - Inicio</title>
+{% endblock title %}
+
+{% block main %}
+<h1>Acerca de nosotros</h1>
+
+<!-- Imagen -->
+<img src="\static\assets\dota2_about_us.jpg"></img>
+
+<p>Dota es una serie de videojuegos de estrategia ahora desarrollados por Valve.
+<br>La serie comenzó en 2003 con el lanzamiento de Defense of the Ancients (DotA), un modo de campo de batalla en línea multijugador (MOBA) desarrollado por fans para el videojuego Warcraft III: Reign of Chaos y su expansión The Frozen Throne.
+<br>El mod original presenta un juego centrado en dos equipos de hasta cinco jugadores que asumen el control de personajes individuales, llamados "héroes", que deben coordinarse para destruir la estructura de la base central del enemigo, llamada "Ancient", para ganar el juego.<br>
+<br>Nosotros jugamos dota y ordenamos la información de héroes, armas y objetos consumibles para que conozcan más del juego.
+<br>
+<br><a class="btn btn-primary" href="{% url 'heroes' %}" role="button">Conocer héroes</a>
+<a class="btn btn-primary" href="{% url 'armas' %}" role="button">Conocer armas</a>
+<a class="btn btn-primary" href="{% url 'consumibles' %}" role="button">Conocer consumibles</a>
+
+{% endblock main %}

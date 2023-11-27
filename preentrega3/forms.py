@@ -1,4 +1,7 @@
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+from .models import Avatar
 
 class HeroeFormulario(forms.Form):
     nombre = forms.CharField(required=True, max_length=32)
@@ -20,3 +23,24 @@ class ConsumibleFormulario(forms.Form):
     sanacion = forms.IntegerField(required=True)
     duracion = forms.IntegerField(required=True)
     costo = forms.IntegerField(required=True)
+
+# Formularios de usuarios
+
+class UserRegisterForm(UserCreationForm):
+    password1 = forms.CharField(label = 'Contraseña', widget = forms.PasswordInput)
+    password1 = forms.CharField(label = 'Repetir Contraseña', widget = forms.PasswordInput)
+    
+    class Meta:
+        model = User
+        fields = ['last_name', 'first_name', 'username', 'email', 'password1', 'password2']
+
+
+class UserUpdateForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['last_name', 'first_name', 'email']
+
+class AvatarFormulario(forms.ModelForm):
+    class Meta:
+        model = Avatar
+        fields = ['imagen']

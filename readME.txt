@@ -5,6 +5,11 @@ Es una aplicacion web que muestra la lista de heroes, armas y objetos consumible
 ACCESO: 
 localhost/preentrega3/dota
 
+USUARIO ADMINISTRADOR:
+
+Usuario: coderhouse
+Contraseña: coderask123
+
 MODELOS:
 Heroe
 Arma
@@ -23,11 +28,6 @@ Paginas de formularios para los datos
 Paginas de listas para mostrar los datos
 Archivos html para crear datos
 Archivos html para encontrar datos
-
-USUARIO ADMINISTRADOR:
-
-Usuario: coderhouse
-Contraseña: coderask123
 
 Dependencias del documento:
 
