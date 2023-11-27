@@ -1,3 +1,6 @@
+VIDEO DEL PROYECTO:
+https://youtu.be/o0I4x58fB_k
+
 DESCRIPCION DEL PROYECTO:
 
 Es una aplicacion web que muestra la lista de heroes, armas y objetos consumibles del juego DotA (Defense of the Ancients).
